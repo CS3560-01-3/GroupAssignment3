@@ -1,4 +1,4 @@
-package DBS;
+package DBs;
 
 /**
 	 * Doctor class, subclass of Person

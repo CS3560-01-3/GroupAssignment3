@@ -1,4 +1,4 @@
-package DBS;
+package DBs;
 
 /**
 	 * Customer class, subclass of Person

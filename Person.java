@@ -1,10 +1,10 @@
-package DBS;
+package DBs;
 
 	/**
 	 * Person superclass
 	 *
 	 */
-public class Person {
+public abstract class Person {
 	String name;
 	String phone;
 	String email;

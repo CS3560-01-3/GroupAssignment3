@@ -1,4 +1,4 @@
-package DBS;
+package DBs;
 /**
 	 * Order Entry class
 	 *

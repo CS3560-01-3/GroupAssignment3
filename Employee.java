@@ -1,4 +1,4 @@
-package DBS;
+package DBs;
 
 /**
 	 * Employee class, subclass of Person
