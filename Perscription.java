@@ -1,0 +1,11 @@
+package DBS;
+
+	/**
+	 * Perscription class
+	 *
+	 */
+	public class Perscription {
+		boolean filled;
+		String date;
+		String expDate;
+	}
