@@ -1,5 +1,8 @@
 package application;
 
+// SQL imports
+import java.sql*;
+
 // javaFX imports
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -120,4 +123,29 @@ public class Main extends Application implements EventHandler<ActionEvent> {
             primaryStage.setScene(home);
         }
     }
+
+    // method to access database
+    public static void accesDB() {
+   //  change url dependently
+   String url ="jdbc:mysql://127.0.0.1:3306/groupassignment";
+   String user ="root";
+   String password ="Jokerstom123";
+
+   Connection conn = null;
+   Statement stmt = null;
+
+   try {
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      conn = DriverManager.getConnection(url,user,password);
+      stmt = conn.createStatement();
+
+
+
+  } catch (SQLException e1) {
+      e1.printStackTrace();
+  }catch (ClassNotFoundException e) {
+      e.printStackTrace();
+  }
+}
+}
 }
