@@ -6,13 +6,26 @@ package DBs;
 	 */
 	public class StockItem {
 		String expDate;
+		int productID;
 		
-		/**
-		 * When the System detects that the product’s expiration date has passed, mark the current inventory as expired and needing replacement
-		 * @param productID of the product
-		 */
-		public static void markExpired(String productID) {
-			
+		public StockItem(String expDate, int productID) {
+			this.expDate = expDate;
+			this.productID = productID;
+		}
+		
+		public void checkExp() {
+//			compare currentDate to expDate
+//			change database accordingly
+		}
+		public void writeTo() {
+
+//			String sql = "insert into product " + "values(" + id + "," + "'" + productName + "'" + "," + "'" + supplierName
+//					+ "'" + "," + quantity + ")";
+//			Main.insertDB(sql);
+
+		}
+		public void remove() {
+
 		}
 	}
 	
