@@ -36,7 +36,7 @@ public class DBFunc {
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("Select * from " + table);
 			while (rs.next()) {
-				if (rs.getString("productName").equals(name)) {
+				if (rs.getString(table+"Name").equals(name)) {
 					return false;
 				}
 			}
@@ -46,6 +46,23 @@ public class DBFunc {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	
+	public static int nameToIdDB(String name, String table) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(url, user, password);
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("select "+ table +"ID from "+ table+" where "+ table+"Name ='"+name+"'");
+			if(rs.next()) {
+				return rs.getInt(table+"ID");
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	public static int getLastDB(String name) {
