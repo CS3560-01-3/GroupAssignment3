@@ -1,11 +1,7 @@
 package application;
 
 // SQL imports
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql*;
 
 // javaFX imports
 import javafx.application.Application;
@@ -22,11 +18,9 @@ import DBs.*;
 
 // java.util imports
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Main extends Application implements EventHandler<ActionEvent> {
-	
-	
+
     // mainMenu buttons
     private Button registerProduct = new Button("Register New Product");
     private Button orderProduct = new Button("order Product");
@@ -104,14 +98,14 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
 
         if (event.getSource() == registerProduct) {
-            Product.register(primaryStage, home);
+            Product.registerProduct(products, primaryStage, home);
             
 
         } else if (event.getSource() == orderProduct) {
             primaryStage.setScene(empty);
 
         } else if (event.getSource() == deregisterProduct) {
-        	Product.deregister(primaryStage, home);
+            primaryStage.setScene(empty);
 
         } else if (event.getSource() == addPerscription) {
             primaryStage.setScene(empty);
@@ -130,8 +124,28 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         }
     }
 
-   
-    
-    
-}
+    // method to access database
+    public static void accesDB() {
+   //  change url dependently
+   String url ="jdbc:mysql://127.0.0.1:3306/groupassignment";
+   String user ="root";
+   String password ="Jokerstom123";
 
+   Connection conn = null;
+   Statement stmt = null;
+
+   try {
+      Class.forName("com.mysql.cj.jdbc.Driver");
+      conn = DriverManager.getConnection(url,user,password);
+      stmt = conn.createStatement();
+
+
+
+  } catch (SQLException e1) {
+      e1.printStackTrace();
+  }catch (ClassNotFoundException e) {
+      e.printStackTrace();
+  }
+}
+}
+}
