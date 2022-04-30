@@ -17,8 +17,8 @@ public class Person {
 	int phone;
 	String email;
 	
-	private Person(String name) {
-		this.name = name;
+	private Person(int personID) {
+		this.personID=personID;
 	}
 	public Person(String name, int phone, String email) {
 		this.name = name;
@@ -46,8 +46,8 @@ public class Person {
 		TextField PersonName = new TextField("Person Name");
 		Button submit = new Button("submit");
 		submit.setOnAction(e -> {
-			Person a = new Person(PersonName.getText());
-			a.remove(DBFunc.nameToIdDB(a.name, "person"));
+			Person a = new Person(DBFunc.nameToIdDB(PersonName.getText(), "person"));
+			a.remove();
 			primaryStage.setScene(prev);
 		});
 
@@ -55,14 +55,14 @@ public class Person {
 		Scene register1 = new Scene(regInputs, 300, 250);
 		primaryStage.setScene(register1);
 	}
-	public void remove(int id) {
-		String sql = "delete from person where personID = " + "'" + id + "'";
+	public void remove() {
+		String sql = "delete from person where personID = " + "'" + personID + "'";
 		DBFunc.execDB(sql);
-		sql = "delete from customer where personID = " + "'" + id + "'";
+		sql = "delete from customer where personID = " + "'" + personID + "'";
 		DBFunc.execDB(sql);
-		sql = "delete from doctor where personID = " + "'" + id + "'";
+		sql = "delete from doctor where personID = " + "'" + personID + "'";
 		DBFunc.execDB(sql);
-		sql = "delete from employee where personID = " + "'" + id + "'";
+		sql = "delete from employee where personID = " + "'" + personID + "'";
 		DBFunc.execDB(sql);
 	}
 }
